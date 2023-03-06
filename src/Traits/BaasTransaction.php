@@ -28,7 +28,7 @@ trait BaasTransaction
 
         ]);
     }
-
+    // Aitime banking as Service Purchase
     public function purchaseAirtimeBaas($param)
     {
         $validator = Validator::make($param, [
