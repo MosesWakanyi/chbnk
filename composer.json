@@ -1,0 +1,17 @@
+{
+    "name": "banking/services",
+    "description": "This is a unichannel for baas and momo banking services that handles payments.It connects to Licensed BAAS plaforms ",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Banking\\Services\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "Moses",
+        "email": "mosegathecha@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {}
+}
