@@ -112,7 +112,6 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
         )->setUrl('/query/getTransResult')
             ->execute();
     }
-
     /**
      * Query transactions using the BaaS communication API.
      * 
