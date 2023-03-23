@@ -118,6 +118,14 @@ trait BaasTransaction
     public function payoutBaas($param)
     {
     }
+
+    /**
+     * It verifies a transaction.
+     * 
+     * @param param 
+     * 
+     * @return The return value is a json object with the following keys:
+     */
     public function verifyTxnBaas($param)
     {
         $validator = Validator::make($param, [
