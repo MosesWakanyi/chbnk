@@ -61,6 +61,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
         return $this->setBody($param['request_id'], [
             'accountId' => $param['account_id'],
             'networkProvider' =>  $param['network_provider'],
+            'mobileNumber' => $param['phone_number'],
             'amount' =>  $param['amount'],
         ])->setUrl('/utilityPayment/airtimePayment')
             ->execute();

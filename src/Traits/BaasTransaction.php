@@ -37,6 +37,7 @@ trait BaasTransaction
             'network_provider' => 'required',
             'amount' => 'required|numeric',
             'purchase_type' => 'required',
+            'phone_number' => 'required',
             'request_id' => 'required'
         ]);
         if ($validator->failed()) {
@@ -46,6 +47,7 @@ trait BaasTransaction
         return $baasTxn->purchase([
             'account_id' => $param['account_id'],
             'network_provider' =>  $param['network_provider'],
+            'phone_number' => $param['phone_number'],
             'amount' =>  $param['amount'],
             'purchase_type' =>  $param['purchase_type'],
             'request_id' => $param['request_id'],
