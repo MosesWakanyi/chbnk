@@ -92,7 +92,6 @@ trait BaasTransaction
         $baasTxn = new BaasWalletTransaction;
         return $baasTxn->transactionStatus([
             'txn_id' => $param['txn_id'],
-            'request_id' => 'required',
             'request_id' => $param['request_id']
         ]);
     }

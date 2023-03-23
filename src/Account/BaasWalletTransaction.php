@@ -106,8 +106,10 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function transactionStatus($param)
     {
         // TODO: Implement the transaction status process using the BaaS communication API.
-        return $this->setBody($param['request_id'], ['txId' => $param['txn_id']])
-            ->setUrl('/query/getTransResult')
+        return $this->setBody(
+            $param['request_id'],
+            ['txId' => $param['txn_id']]
+        )->setUrl('/query/getTransResult')
             ->execute();
     }
 
@@ -120,8 +122,10 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function transactionQuery($param)
     {
         // TODO: Implement the transaction query process using the BaaS communication API.
-        return $this->setBody($param['request_id'], ['txId' => $param['txn_id']])
-            ->setUrl('/query/getTransResult')
+        return $this->setBody(
+            $param['request_id'],
+            ['txId' => $param['txn_id']]
+        )->setUrl('/query/getTransResult')
             ->execute();
     }
 }
