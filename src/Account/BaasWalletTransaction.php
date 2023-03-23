@@ -96,6 +96,14 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function approveTxn($param)
     {
         // TODO: Implement the transaction verification process using the BaaS communication API.
+        return $this->setBody(
+            $param['request_id'],
+            [
+                'txId' => $param['txn_id'],
+                'smsCode' => $param['sms_code']
+            ]
+        )->setUrl('/trans/confirmTransfer')
+            ->execute();
     }
 
     /**

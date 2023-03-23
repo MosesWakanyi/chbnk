@@ -10,8 +10,6 @@ trait BaasTransaction
 {
     public function depositMpesaBaas($param)
     {
-
-
         $validator = Validator::make($param, [
             'account_id' => 'required',
             'phone_number' => 'required',
@@ -124,6 +122,7 @@ trait BaasTransaction
     {
         $validator = Validator::make($param, [
             'txn_id' => 'required',
+            'sms_code' => 'required',
             'request_id' => 'required'
         ]);
         if ($validator->failed()) {
@@ -132,6 +131,7 @@ trait BaasTransaction
         $baasTxn = new BaasWalletTransaction;
         return $baasTxn->approveTxn([
             'txn_id' => $param['txn_id'],
+            'sms_code' => $param['sms_code'],
             'request_id' => $param['request_id'],
         ]);
     }
