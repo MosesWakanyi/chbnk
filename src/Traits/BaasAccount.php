@@ -26,6 +26,7 @@ trait BaasAccount
             'id_type' => 'required',
             'id_number' => 'required',
             'dob' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
@@ -42,6 +43,7 @@ trait BaasAccount
             'idType' => $param['id_type'],
             'idNumber' =>  $param['id_number'],
             'dob' =>  $param['dob'],
+            'request_id' => $param['request_id'],
         ]);
     }
     public function upgradeBaasAccount($param)
@@ -53,6 +55,7 @@ trait BaasAccount
             'back_side' => 'required',
             'selfie_photo' => 'required',
             'global_uuid' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
@@ -64,6 +67,7 @@ trait BaasAccount
             'frontSidePhoto' =>  $param['front_side'],
             'backSidePhoto' =>  $param['back_side'],
             'selfiePhoto' =>  $param['selfie_photo'],
+            'request_id' => $param['request_id'],
         ]);
     }
 
@@ -73,7 +77,7 @@ trait BaasAccount
             'global_uuid' => 'required',
             'phone_number' => 'required',
             'onboarding_id' => 'required',
-
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
@@ -83,45 +87,52 @@ trait BaasAccount
             'id' => $param['global_uuid'],
             'phone_number' => $param['phone_number'],
             'onboarding_id' => $param['onboarding_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
     function queryAccountDetail($param)
     {
         $validator = Validator::make($param, [
-            'global_uuid' => 'required',
+            'account_id' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
         }
         $baasWallet = new BaasWallet;
         return $baasWallet->retrieve([
-            'id' => $param['global_uuid'],
+            'id' => $param['account_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
     function transactionForAccount($param)
     {
         $validator = Validator::make($param, [
-            'global_uuid' => 'required',
+            'account_id' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
         }
         $baasWallet = new BaasWallet;
         return $baasWallet->cancel([
-            'id' => $param['global_uuid'],
+            'id' => $param['account_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
     public function cancelAccount($param)
     {
         $validator = Validator::make($param, [
-            'global_uuid' => 'required',
+            'account_id' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
         }
         $baasWallet = new BaasWallet;
         return $baasWallet->cancel([
-            'id' => $param['global_uuid'],
+            'id' => $param['account_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
 
@@ -131,6 +142,7 @@ trait BaasAccount
             'onboard_type' => 'required',
             'onboarding_id' => 'required',
             'code' => 'required',
+            'request_id' => 'required'
 
         ]);
         if ($validator->fails()) {
@@ -141,6 +153,7 @@ trait BaasAccount
             'onboard_type' => $param['onboard_type'],
             'onboarding_id' => $param['onboarding_id'],
             'code' => $param['code'],
+            'request_id' => $param['request_id'],
         ]);
     }
     public function resendVerify($param)
@@ -148,6 +161,7 @@ trait BaasAccount
         $validator = Validator::make($param, [
             'onboard_type' => 'required',
             'onboarding_id' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->messages()));
@@ -156,6 +170,7 @@ trait BaasAccount
         return $baasWallet->resendOtp([
             'onboard_type' => $param['onboard_type'],
             'onboarding_id' => $param['onboarding_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
 }

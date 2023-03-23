@@ -20,7 +20,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function deposit($param)
     {
         // TODO: Implement the deposit process using the BaaS communication API.
-        return $this->setBody('KNPYX', [
+        return $this->setBody($param['request_id'], [
             'accountId' => $param['account_id'],
             'mobile' =>  $param['phone_number'],
             'amount' =>  $param['amount'],
@@ -38,7 +38,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function payout($param)
     {
         // TODO: Implement the withdrawal process using the BaaS communication API.
-        return $this->setBody('KNPYX', [
+        return $this->setBody($param['request_id'], [
             'payerAccountId' => $param['account_id'],
             'payeeShortCode' =>  $param['payee_short_code'],
             'payeeReferenNumber' =>  $param['referen_number'],
@@ -58,7 +58,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function purchase($param)
     {
         // TODO: Implement the purchase process using the BaaS communication API.
-        return $this->setBody('KNPYX', [
+        return $this->setBody($param['request_id'], [
             'accountId' => $param['account_id'],
             'networkProvider' =>  $param['network_provider'],
             'amount' =>  $param['amount'],
@@ -75,7 +75,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function transfer($param)
     {
         // TODO: Implement the transfer process using the BaaS communication API.
-        return $this->setBody('KNPYX', [
+        return $this->setBody($param['request_id'], [
             'payerAccountId' => $param['account_id'],
             'payeeBankCode' => $param['payee_bank_code'],
             'payeeAccountId' => $param['payee_account_id'],
@@ -106,7 +106,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function transactionStatus($param)
     {
         // TODO: Implement the transaction status process using the BaaS communication API.
-        return $this->setBody('KNPYX', ['txId' => $param['txn_id']])
+        return $this->setBody($param['request_id'], ['txId' => $param['txn_id']])
             ->setUrl('/query/getTransResult')
             ->execute();
     }
@@ -120,7 +120,7 @@ class BaasWalletTransaction extends BaasCommunication implements BaasableWalletT
     public function transactionQuery($param)
     {
         // TODO: Implement the transaction query process using the BaaS communication API.
-        return $this->setBody('KNPYX', ['txId' => $param['txn_id']])
+        return $this->setBody($param['request_id'], ['txId' => $param['txn_id']])
             ->setUrl('/query/getTransResult')
             ->execute();
     }

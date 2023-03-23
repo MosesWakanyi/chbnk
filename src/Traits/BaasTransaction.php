@@ -16,6 +16,7 @@ trait BaasTransaction
             'account_id' => 'required',
             'phone_number' => 'required',
             'amount' => 'required|numeric',
+            'request_id' => 'required'
         ]);
         if ($validator->fails()) {
             throw new Exception(json_encode($validator->errors()->all()));
@@ -25,7 +26,7 @@ trait BaasTransaction
             'account_id' => $param['account_id'],
             'phone_number' => $param['phone_number'],
             'amount' => $param['amount'],
-
+            'request_id' => $param['request_id'],
         ]);
     }
     // Aitime banking as Service Purchase
@@ -36,6 +37,7 @@ trait BaasTransaction
             'network_provider' => 'required',
             'amount' => 'required|numeric',
             'purchase_type' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->failed()) {
             throw new Exception(json_encode($validator->errors()->all()));
@@ -46,6 +48,7 @@ trait BaasTransaction
             'network_provider' =>  $param['network_provider'],
             'amount' =>  $param['amount'],
             'purchase_type' =>  $param['purchase_type'],
+            'request_id' => $param['request_id'],
         ]);
     }
 
@@ -59,6 +62,7 @@ trait BaasTransaction
             'short_code_type' => 'required',
             'referen_number' => 'required',
             'amount' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->failed()) {
             throw new Exception(json_encode($validator->errors()->all()));
@@ -71,6 +75,7 @@ trait BaasTransaction
             'referen_number' =>  $param['referen_number'],
             'amount' =>  $param['amount'],
             'description' =>  $param['description'],
+            'request_id' => $param['request_id'],
         ]);
     }
 
@@ -79,6 +84,7 @@ trait BaasTransaction
 
         $validator = Validator::make($param, [
             'txn_id' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->failed()) {
             throw new Exception(json_encode($validator->errors()->all()));
@@ -86,6 +92,8 @@ trait BaasTransaction
         $baasTxn = new BaasWalletTransaction;
         return $baasTxn->transactionStatus([
             'txn_id' => $param['txn_id'],
+            'request_id' => 'required',
+            'request_id' => $param['request_id']
         ]);
     }
 
@@ -93,6 +101,7 @@ trait BaasTransaction
     {
         $validator = Validator::make($param, [
             'txn_id' => 'required',
+            'request_id' => 'required',
         ]);
         if ($validator->failed()) {
             throw new Exception(json_encode($validator->errors()->all()));
@@ -100,6 +109,7 @@ trait BaasTransaction
         $baasTxn = new BaasWalletTransaction;
         return $baasTxn->transactionQuery([
             'txn_id' => $param['txn_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
 
@@ -113,6 +123,7 @@ trait BaasTransaction
     {
         $validator = Validator::make($param, [
             'txn_id' => 'required',
+            'request_id' => 'required'
         ]);
         if ($validator->failed()) {
             throw new Exception(json_encode($validator->errors()->all()));
@@ -120,6 +131,7 @@ trait BaasTransaction
         $baasTxn = new BaasWalletTransaction;
         return $baasTxn->approveTxn([
             'txn_id' => $param['txn_id'],
+            'request_id' => $param['request_id'],
         ]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Banking\Services\Account;
 
-use Illuminate\Support\Str;
 use Banking\Services\Contracts\BaasableWallet;
 use Banking\Services\ApiRequest\BaasCommunication;
 
@@ -28,7 +27,7 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
         ];
 
         // Set the request body with a random string prefix and the request parameters
-        return $this->setBody('KNmPYX_' . Str::random(5), $req)
+        return $this->setBody($param['request_id'], $req)
             ->setUrl('/onboarding/submitEasyOnboardingRequest')
             ->execute();
     }
@@ -44,7 +43,7 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
             'code' =>  $param['code'],
         ];
         // Set the request body with a random string prefix and the request parameters
-        return $this->setBody('KNmPYX_' . Str::random(5), $req)
+        return $this->setBody($param['request_id'], $req)
             ->setUrl('/sms/onboarding/confirmOnboardingRequest')
             ->execute();
     }
@@ -58,7 +57,7 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
             'onboardingRequestId' =>  $param['onboarding_id'],
         ];
         // Set the request body with a random string prefix and the request parameters
-        return $this->setBody('KNmPYX_' . Str::random(5), $req)
+        return $this->setBody($param['request_id'], $req)
             ->setUrl('/sms/onboarding/resendOnboardSms')
             ->execute();
     }
@@ -77,7 +76,7 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
         ];
 
         // Set the request body with a random string prefix and the request parameters
-        return $this->setBody('KNmPYX_' . Str::random(5), $req)
+        return $this->setBody($param['request_id'], $req)
             ->setUrl('/onboarding/walletAccountUpgrade')
             ->execute();
     }
@@ -99,7 +98,7 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
         ];
 
         // Set the request body with a random string prefix and the request parameters
-        return $this->setBody('KNmPYX_' . Str::random(5), $req)
+        return $this->setBody($param['request_id'], $req)
             ->setUrl('/onboarding/getOnboardingStatus')
             ->execute();
     }
@@ -113,7 +112,7 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
         $req = [
             'accountId' => $param['id']
         ];
-        return $this->setBody('KNmPYX_' . Str::random(5), $req)
+        return $this->setBody($param['request_id'], $req)
             ->setUrl('/query/getAccountDetails')
             ->execute();
     }
