@@ -25,8 +25,7 @@ class BaasCommunication implements BaasableCommunication
 
     public function __construct()
     {
-        $baasEnv = config('baas.env_baas', 'sandbox');
-        if (strcasecmp($baasEnv, 'production') == 0) {
+        if (strcasecmp(config('baas.env_baas', 'sandbox'), 'production') == 0) {
             $this->base_url = 'https://baas.choicedigitalbank.com';
         }
         // Initialize HTTP client with base URI and timeout options
