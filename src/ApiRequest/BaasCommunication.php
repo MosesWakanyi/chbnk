@@ -13,7 +13,7 @@ use Banking\Services\Contracts\BaasableCommunication;
 class BaasCommunication implements BaasableCommunication
 {
 
-    const BASE_URL = 'https://baas-pilot.choicebankapi.com';
+    private $base_url = 'https://baas-pilot.choicebankapi.com';
 
     protected BaasSignature $baasSignature; // HTTP client object
     protected Client $client; // HTTP client object
@@ -23,12 +23,15 @@ class BaasCommunication implements BaasableCommunication
     protected $is_valid_reponse; // Response object
 
 
-
     public function __construct()
     {
+        $baasEnv = config('baas.env_baas', 'sandbox');
+        if (strcasecmp($baasEnv, 'production') == 0) {
+            $this->base_url = 'https://baas.choicedigitalbank.com';
+        }
         // Initialize HTTP client with base URI and timeout options
         $this->client = new Client([
-            'base_uri' => self::BASE_URL,
+            'base_uri' => $this->base_url,
             'timeout'  => 2.0,
         ]);
         $this->baasSignature = new BaasSignature();
