@@ -27,6 +27,8 @@ class BaasSignature implements BaasDigitalSignature
      */
     public function signedBody(string $transactionId, array $params = [])
     {
+        //remove middlename from the array
+        unset($params['middleName']);
         // Construct the data array with the required fields and random salt
         $data = [
             "locale" => "en_KE",

@@ -27,9 +27,14 @@ class BaasWallet extends BaasCommunication implements BaasableWallet
         ];
 
         // Set the request body with a random string prefix and the request parameters
-        return $this->setBody($param['request_id'], $req)
-            ->setUrl('/onboarding/submitEasyOnboardingRequest')
-            ->execute();
+        try {
+            return $this->setBody($param['request_id'], $req)
+                ->setUrl('/onboarding/submitEasyOnboardingRequest')
+                ->execute();
+        } catch (\Exception $exception) {
+            info('error onboarding...');
+            info(json_encode($exception->getMessage()));
+        }
     }
 
     // Define the verify method that takes an array of parameters, and verifies the user's identity

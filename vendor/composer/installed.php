@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
+        'name' => 'banking/services',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
+        'reference' => 'b831f8014e9a4ef398899890c77f25d90b2bef56',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1f170bc095a698d7b2ceb097934804b4b3c91fa6',
-        'name' => 'banking/services',
         'dev' => true,
     ),
     'versions' => array(
         'banking/services' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
+            'reference' => 'b831f8014e9a4ef398899890c77f25d90b2bef56',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1f170bc095a698d7b2ceb097934804b4b3c91fa6',
             'dev_requirement' => false,
         ),
     ),
