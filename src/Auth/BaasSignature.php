@@ -27,7 +27,7 @@ class BaasSignature implements BaasDigitalSignature
      */
     public function signedBody(string $transactionId, array $params = [])
     {
-        //remove middlename from the array
+        //remove middlename if null from the array
         if (isset($params['middleName']) && !$params['middleName']) {
           unset($params['middleName']);
         }
