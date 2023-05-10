@@ -28,7 +28,7 @@ class BaasSignature implements BaasDigitalSignature
     public function signedBody(string $transactionId, array $params = [])
     {
         //remove middlename from the array
-        if (!$params['middleName']) {
+        if (isset($params['middleName']) && !$params['middleName']) {
           unset($params['middleName']);
         }
         // Construct the data array with the required fields and random salt

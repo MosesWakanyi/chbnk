@@ -15,7 +15,6 @@ interface BaasDigitalSignature
      * @return mixed The generated digital signature.
      */
     public function signedBody(string $transactionId, array $params = []);
-
     /**
      * Validates a digital signature for a given transaction.
      *
