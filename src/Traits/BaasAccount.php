@@ -76,7 +76,6 @@ trait BaasAccount
         $validator = Validator::make($param, [
             'global_uuid' => 'required',
             'phone_number' => 'required',
-            'onboarding_id' => 'required',
             'request_id' => 'required'
         ]);
         if ($validator->fails()) {
